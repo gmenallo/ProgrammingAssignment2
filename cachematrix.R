@@ -1,9 +1,14 @@
-# The following functions 
+# The following functions are meant to be run in succession.
+# makeCacheMatrix creates a cacheble matrix and a set of functions to recall/set the values of the original matrix and its inverse 
+#(which initial value is NULL) in the global environment.
+# cacheSolve checks if the inverse of the matrix is already cached. If it is, the function returns its value. 
+#Else, it computes the inverse matrix and saves the value in the cache. 
+# Please, check the code for further details.
 
 
 
-# creates a cacheble matrix
 
+# Creates a cacheble matrix
 makeCacheMatrix <- function(x = matrix()) {       
   inv <- NULL                                      # sets the initial value of the inverse matrix
   set <- function(y) {                             # sets the value of the original and inverse matrix in the global environmet  
@@ -22,8 +27,7 @@ makeCacheMatrix <- function(x = matrix()) {
 
 
 
-# checks if exist a cached value and return it or computes and saves a new one
-
+# Checks if exist a cached inverse matrix value and returns it or computes and saves a new one.
 cacheSolve <- function(x, ...) {                    
   inv <- x$getsolve()                              # loads inverse matrix from cache
   if(!is.null(inv)) {                              # if inverse matrix is not NULL, returns value of inv
